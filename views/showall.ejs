@@ -1,0 +1,24 @@
+<% include ./partials/header %>
+<div class = "container">
+<% if(result.length === 0){ %>
+    <h1>No Flights Available For This Route</h1>
+    <a href="/search">Continue search</a>
+<% } else { %>
+        <h1>Available Flights</h1>
+
+    <% result.forEach(function(result){ %>
+    <div>
+        <%= result.from_loc %> - <%= result.to_loc%>     ||      <%= result.acode%><br>
+        <%= result.date%> <br>
+        <%= result.dep_time%> - <%= result.arr_time%> <br>
+        Starting at Rs: <%= result.price_e%>
+        <form action="/users/book/<%= result.fcode%>" method="GET">
+        <input type="submit" value="book">
+        </form>
+    </div> <br>
+    <% }) %>
+<% } %>
+ 
+</div>
+
+<% include ./partials/footer %>

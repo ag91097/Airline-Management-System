@@ -1,0 +1,34 @@
+<% include ./partials/header %>
+<div class = "container">
+    
+<h1>ENTER PASSENGER DETAILS</h1>
+<br>
+<h2>CALCULATED FARE:: <%= price%></h2>
+<br>
+<% var seats =seat %>
+<% var classs =classes %>
+<p>Enter passenger details:</p>
+<form action="/users/add/<%= flight_id%>" method = "POST">
+    
+        <% for(var i =0; i <seats; i++ ) { %>
+        <div>
+            <input type="text" name="name" placeholder="Passenger Name">
+            <% if (classs === "economy") { %>
+                <input type="hidden" name="class" value="economy">
+            <% } else { %>
+                <input type="hidden" name="class" value="business">
+            <% } %>
+            <select name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+        <br>
+<% } %>
+    <input type="hidden" name="num_seats" value="<%= seat%>">
+    <input type="submit" value="Submit">
+</form>
+
+</div>
+<% include ./partials/footer %>

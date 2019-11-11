@@ -1,0 +1,17 @@
+<% include ./partials/header %>
+
+<div class="container">
+<h1>ENTER FLIGHT BOOKING DETAILS</h1>
+
+<form action="/users/book/<%= flight_id%>" method="POST">
+    <input type="number" name="seats" , placeholder="number of seats">
+    <select name="class">
+        <option value="economy">Economy</option>
+        <option value="business">Business</option>
+    </select>
+    <input type="submit" value="Continue">
+</form>
+
+</div>
+
+<% include ./partials/footer %>

@@ -1,0 +1,27 @@
+<% include ./partials/header %>
+<div class = "container">
+<% if(num === 0){ %>
+    <h1>No Tickets Booked Yet...</h1>
+    <a href="/search">Book your tickets here</a>
+<% } else { %>
+    <h1>Booked Tickets</h1>
+    <% result.forEach(function(result){ %>
+        <div>
+            Ticket_id: <%= result.tid%> | Ticket_type: <%= result.ttype%><br>
+            Passenger Name: <%= result.name%> <br>
+            Passenger Gender: <%= result.gender%> <br>
+            
+            <span>
+                <a href="/users/more/<%= result.fcode%>"></a> 
+
+                <form action="/users/cancel/<%= result.tid%>" method="POST">
+                    <input type="submit" value="Cancel Ticket">
+                </form>
+            </span>
+            
+            
+        </div><br>
+    <% }) %>
+<% } %>
+</div>
+<% include ./partials/footer %>
